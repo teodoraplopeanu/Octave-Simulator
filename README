@@ -1,0 +1,105 @@
+﻿### Copyright	Teodora-Anca Plopeanu 312CAa 2023-2024
+
+
+# Tema 2 - Simulator de Octave
+
+Programul efectueaza operatii pe matrice in stilul soft-ului **GNU Octave**.
+Pentru implementare acestei teme am folosit resizable arrays.
+Array-ul ce retine toate matricele cu care lucram este ***a.
+
+## Încărcarea în memorie a unei matrice
+#### Comanda L -- functia load
+Verificam daca am mai incarcat pana acum si alte matrice in memorie, 
+caz in care realocam resursele, 
+folosind functia **realloc**. In caz contrar, inseamna ca suntem la 
+prima matrice si folosim functia **malloc**.
+Pentru a face asta, ne folosim de variabilele *count* (care retine 
+cate matrici avem in array) si *ok*, 
+initializat cu 1, care devine 0 dupa prima apelare a functiei **load**.
+Retinem si dimensiunile matricei in vectorul *dims*.
+
+## Determinarea dimensiunilor unei matrice
+#### Comanda D -- functia dimensions
+Verificam daca indexul primit este valid. In caz afirmativ:
+Printam valorile retinute in array-ul *dims*, la adresa *index*.
+dims[index][0] reprezinta numarul de linii, respectiv
+dims[index][1] numarul de coloane.
+
+## Afisarea unei matrice
+#### Comanda P -- functia print_matrix
+Verificam daca indexul primit este valid. In caz afirmativ:
+Afisam valorile retinute in matricea retinut ala adresa a[index].
+
+## Redimensionarea unei matrice
+#### Comanda C -- functia redim
+Citim numarul de linii - l, urmat de l indici de linii. 
+Analog pentru cele c coloane.
+Dupa indicii citit vom face redimensioanrea.
+Verificam daca indexul primit este valid. Daca nu este, 
+eliberam resursele utilizate pentru memorarea 
+indicilor si paracsim functia. In caz afirmativ:
+Cream o matrice auxiliara, in care retinem valorile din 
+matricea initiala ce corespund indicilor cititi 
+la inceputul functiei.
+Eliberam resursele matricei initiale si o realocam dupa 
+noile dimensoiuni, dupa care copiem elementele 
+din matricea auxiliara in matricea a[index].
+Actualizam dimensiunile noii matrici cu *l* si *c* 
+in vectorul de dimensiuni, *dims*.
+
+## Înmultirea a două matrice
+#### Comanda M -- functia multiply
+Verificam daca indexul primit este valid si daca dimensiunile 
+celor doua matrice sunt compatibile 
+(numarul colaonelor primei coincide cu numarul liniilor celeie de-a doua). 
+In caz afirmativ:
+Alocam memorie pentru matricea rezultat si pentru dimensiunile ei.
+Actualizam vectorul de dimensiuni cu numarul liniilor primei matrice 
+si numarul coloanelor celei de-a doua.
+Calculam produsul celor doua matrici folosind algoritmul clasic de 
+inmultire a matricelor si retinem 
+valorile elementelor (modulo 10007) in noua matrice.
+
+## Sortarea matricelor
+#### Comanda O -- functia sort_matrices
+Cream un vector *sums*, ce retine sumele elementelor fiecarei 
+matrci in parte (calculate modulo 10007).
+Dupa care, sortam corespunzator vectorii *a, sums si dims, 
+folosind algoritmul de Bubble Sort.
+La final, eliberam resursele alocate vectorului de sume.
+
+## Transpunerea unei matrice
+#### Comanda T -- functia transpose
+Verificam daca indexul primit este valid. In caz afirmativ:
+Alocam memorie pentru o matrice auxiliara, in care vom transpune matricea initiala.
+Eliberam memoria folosita pentru matricea a[index] si o realocam corespunzator 
+cu noile dimensiuni.
+Copiem matricea transpusa din *aux* in a[index] si eliberam memoria aferenta *aux*.
+Actualizam dimensiunile in vectorul *dims*.
+
+## Ridicarea unei matrice la o putere în timp logaritmic
+#### Comanda R -- functia: power
+Verificam daca indexul primit este valid, daca puterea este pozitiva si daca matricea 
+este patratica (pentru a o putea ridica la o putere). In caz afirmativ:
+Calculam puterea matricei primite ca argument pe baza unui algoritm de complexitate logaritmica. 
+Copiem a[index] in variabila *backup*, iar matricea noastra va fi transformata in matricea identitate.
+Dupa care, intram in while. In cazul in care puterea pow este para, inmultim matricea *backup* cu ea 
+insasi si rezultatul se va afla tot in *backup*. Daca este impara, inmultim a[index] cu *backup*, iar 
+rezultatul se stocheaza in a[index].
+
+## Eliberarea memoriei unei matrice
+#### Comanda F -- functia free_matrix
+Verificam daca indexul primit este valid. In caz afirmativ:
+Eliberam resursele aferente matricei a[index] si dimensiunilor ei din *dims*.
+Deplasam restul elementelor din cele doua tablouri (incepand de la pozitia index + 1) 
+cu cate o pozitie la stanga, pentru a umple golul.
+Actualizam variabila *count*, deoarece avem acum cu o matrice mai putin.
+
+## Eliberarea tuturor resurselor
+#### Comanda Q -- functia quit
+Eliberam toate resursele utilizate pentru a memora datele din tablourile ***a si **dims, 
+folosind functia **free**.
+
+## Înmultirea matricelor folosind algoritmul lui Strassen
+#### Comanda S - functia strassen
+
