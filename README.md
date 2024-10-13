@@ -16,53 +16,54 @@ This project is a Matrix Simulator inspired by GNU Octave, implementing various 
 ## Usage Instructions
 
 ### 1. Loading a Matrix
-Command: L (Load Function)
-Allocates memory for the first matrix or reallocates for subsequent matrices.
-Dimensions are stored in the dims array.
+* Command: L (Load Function)
+* Allocates memory for the first matrix or reallocates for subsequent matrices.
+* Dimensions are stored in the dims array.
 
 ### 2. Determining Matrix Dimensions
-Command: D (Dimensions Function)
-Validates the index and prints matrix dimensions (dims[index][0] for rows and dims[index][1] for columns).
+* Command: D (Dimensions Function)
+* Validates the index and prints matrix dimensions (dims[index][0] for rows and dims[index][1] for columns).
 
 ### 3. Displaying a Matrix
-Command: P (Print Function)
-Validates the index and prints the values stored in the matrix at a[index].
+* Command: P (Print Function)
+* Validates the index and prints the values stored in the matrix at a[index].
 
 ### 4. Resizing a Matrix
-Command: C (Redim Function)
-Reads row and column indices for resizing.
-Uses an auxiliary matrix to store and copy values based on the new dimensions.
+* Command: C (Redim Function)
+* Reads row and column indices for resizing.
+* Uses an auxiliary matrix to store and copy values based on the new dimensions.
 
 ### 5. Multiplying Two Matrices
-Command: M (Multiply Function)
-Checks if matrix dimensions are compatible.
-Allocates memory for the result and calculates the product (modulo 10007).
+* Command: M (Multiply Function)
+* Checks if matrix dimensions are compatible.
+* Allocates memory for the result and calculates the product (modulo 10007).
 
 ### 6. Sorting Matrices
-Command: O (Sort Matrices Function)
-Computes the sum of elements (modulo 10007) for each matrix and sorts matrices using Bubble Sort.
+* Command: O (Sort Matrices Function)
+* Computes the sum of elements (modulo 10007) for each matrix and sorts matrices using Bubble Sort.
 
 ### 7. Transposing a Matrix
-Command: T (Transpose Function)
-Allocates an auxiliary matrix for the transpose and reallocates the original with new dimensions.
+* Command: T (Transpose Function)
+vAllocates an auxiliary matrix for the transpose and reallocates the original with new dimensions.
 
 ### 8. Raising a Matrix to a Power
-Command: R (Power Function)
-Checks if the matrix is square and power is positive.
-Utilizes a logarithmic algorithm for efficient calculation.
+* Command: R (Power Function)
+* Checks if the matrix is square and power is positive.
+* Utilizes a logarithmic algorithm for efficient calculation.
 
 ### 9. Freeing Memory for a Matrix
-Command: F (Free Matrix Function)
-Validates the index, releases memory, and shifts remaining matrices in the array.
+* Command: F (Free Matrix Function)
+* Validates the index, releases memory, and shifts remaining matrices in the array.
 
 ### 10. Freeing All Resources
-Command: Q (Quit Function)
-Frees all memory allocated for matrices and dimensions arrays.
+* Command: Q (Quit Function)
+* Frees all memory allocated for matrices and dimensions arrays.
 
 ### 11. Multiplying Matrices Using Strassen's Algorithm
-Command: S (Strassen Function)
-Implements Strassen's algorithm for optimized matrix multiplication.
-Implementation Notes
+* Command: S (Strassen Function)
+* Implements Strassen's algorithm for optimized matrix multiplication.
+  
+### Implementation Notes
 The simulator relies on dynamic memory allocation using malloc and realloc for flexible management of matrices.
 Modular arithmetic (modulo 10007) ensures integer overflow is handled during matrix operations.
 Sorting, multiplication, and power calculations utilize efficient algorithms for optimal performance.
